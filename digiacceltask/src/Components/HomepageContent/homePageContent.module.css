@@ -37,6 +37,7 @@
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  border-radius: 4px;
 }
 .singleItemCard:hover {
   transform: scale(1.1);
@@ -99,8 +100,5 @@
 .searchedShowsContainer {
   display: flex;
   width: 100%;
-  overflow-x: scroll;
-}
-.searchedShowsContainer::-webkit-scrollbar {
-  display: none;
+  flex-wrap: wrap;
 }

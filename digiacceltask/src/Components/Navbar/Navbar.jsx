@@ -19,6 +19,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    if (searchString.length > 0) {
+      navigateTo("/");
+    }
     debouncedSearch(searchString);
   }, [searchString]);
 

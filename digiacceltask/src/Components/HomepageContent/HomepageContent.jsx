@@ -47,29 +47,27 @@ const HomepageContent = () => {
         <div>Loading</div>
       ) : searchedShows.length > 0 ? (
         <div className={styles.searchedShowsContainer}>
-          <div style={{ width: "fit-content", display: "flex" }}>
-            {searchedShows.map((cur) => {
-              return (
-                <div className={styles.singleItemCard} onMouseOver={() => setShowDetail(cur.show)} onMouseLeave={() => setShowDetail({})} onClick={() => goToInfoPage(cur.show.id)}>
-                  <div className={styles.itemImage}>
-                    <img src={cur.show.image && cur.show.image.medium} alt="" />
-                  </div>
-                  {showDetail.id === cur.show.id && (
-                    <div className={styles.itemDetails}>
-                      <div className={styles.smallDetailName}>{cur.show.name}</div>
-                      <div className={styles.infoLine}>
-                        <div className={styles.runtime}>Runtime: {cur.show.runtime}</div>
-                        <div className={cur.show.status === "Ended" ? styles.endedStatus : styles.otherStatus}>{cur.show.status}</div>
-                      </div>
-                      <div className={styles.rating}>Rating: {cur.show.rating.average}</div>
-                      <div className={styles.summary}>{cur.show.summary.replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<b>", "").replaceAll("</b>", "").slice(0, 150)}...</div>
-                      <div style={{ fontSize: "14px", fontWeight: "600" }}>Click to view more</div>
-                    </div>
-                  )}
+          {searchedShows.map((cur) => {
+            return (
+              <div className={styles.singleItemCard} onMouseOver={() => setShowDetail(cur.show)} onMouseLeave={() => setShowDetail({})} onClick={() => goToInfoPage(cur.show.id)}>
+                <div className={styles.itemImage}>
+                  <img src={cur.show.image && cur.show.image.medium} alt="" />
                 </div>
-              );
-            })}
-          </div>
+                {showDetail.id === cur.show.id && (
+                  <div className={styles.itemDetails}>
+                    <div className={styles.smallDetailName}>{cur.show.name}</div>
+                    <div className={styles.infoLine}>
+                      <div className={styles.runtime}>Runtime: {cur.show.runtime}</div>
+                      <div className={cur.show.status === "Ended" ? styles.endedStatus : styles.otherStatus}>{cur.show.status}</div>
+                    </div>
+                    <div className={styles.rating}>Rating: {cur.show.rating.average}</div>
+                    <div className={styles.summary}>{cur.show.summary.replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<b>", "").replaceAll("</b>", "").slice(0, 150)}...</div>
+                    <div style={{ fontSize: "14px", fontWeight: "600" }}>Click to view more</div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       ) : (
         allGenre &&
