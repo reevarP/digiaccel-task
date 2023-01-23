@@ -27,7 +27,7 @@ const InfoPageRightPanel = () => {
   }, [cast, crew]);
 
   useEffect(() => {
-    if (singleShow) {
+    if (singleShow.rating) {
       setRatingInFive(Math.round(singleShow.rating.average / 2));
     }
   }, [singleShow]);
@@ -36,7 +36,7 @@ const InfoPageRightPanel = () => {
     <div className={styles.container}>
       <div className={styles.firstLine}>
         <div className={styles.showName}>
-          {singleShow && singleShow.name} ({singleShow && singleShow.rating.average})
+          {singleShow && singleShow.name} ({singleShow.rating && singleShow.rating.average})
         </div>
         <div>
           {[...new Array(ratingInFive)].map(() => {
@@ -46,7 +46,7 @@ const InfoPageRightPanel = () => {
       </div>
       <div className={styles.secondLine}>
         <div>
-          {singleShow && singleShow.premiered.split("-")[0]} | {singleShow && singleShow.runtime}mins |{" "}
+          {singleShow.premiered && singleShow.premiered.split("-")[0]} | {singleShow && singleShow.runtime}mins |{" "}
           {producer &&
             producer.map((curElem, index, arr) => {
               if (index === arr.length - 1) {
@@ -70,7 +70,7 @@ const InfoPageRightPanel = () => {
       </div>
       <div>
         <div>Movie Description:</div>
-        <div style={{ fontWeight: "500" }}>{singleShow && singleShow.summary.replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<b>", "").replaceAll("</b>", "")}</div>
+        <div style={{ fontWeight: "500" }}>{singleShow.summary && singleShow.summary.replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<b>", "").replaceAll("</b>", "")}</div>
       </div>
     </div>
   );

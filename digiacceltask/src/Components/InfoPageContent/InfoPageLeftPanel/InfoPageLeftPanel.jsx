@@ -6,7 +6,7 @@ const InfoPageLeftPanel = () => {
   const singleShow = useSelector((state) => state.persist.singleShow);
   return (
     <div className={styles.container}>
-      <img src={singleShow && singleShow.image.original} alt="" />
+      <img src={singleShow.image && singleShow.image.original} alt="" />
     </div>
   );
 };
